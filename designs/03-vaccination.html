@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Immunization Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#c8866d",
+                        "on-secondary-container": "#4f6b58",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-error-container": "#93000a",
+                        "on-background": "#221a16",
+                        "tertiary": "#88503a",
+                        "on-primary-fixed": "#400100",
+                        "surface": "#fff8f6",
+                        "surface-tint": "#a13e2f",
+                        "primary-fixed-dim": "#ffb4a7",
+                        "primary-fixed": "#ffdad4",
+                        "outline": "#8a726d",
+                        "on-tertiary-fixed": "#350f02",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#cbead3",
+                        "surface-variant": "#f0dfd9",
+                        "on-tertiary-fixed-variant": "#6b3925",
+                        "surface-container-high": "#f6e5df",
+                        "on-secondary-fixed": "#062012",
+                        "inverse-primary": "#ffb4a7",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#fceae4",
+                        "error": "#ba1a1a",
+                        "primary": "#a13e2f",
+                        "surface-bright": "#fff8f6",
+                        "on-primary-fixed-variant": "#81271b",
+                        "secondary-fixed-dim": "#b0ceb7",
+                        "on-surface-variant": "#56423e",
+                        "surface-container-highest": "#f0dfd9",
+                        "secondary-container": "#cbead3",
+                        "outline-variant": "#ddc0bb",
+                        "on-surface": "#221a16",
+                        "tertiary-fixed-dim": "#feb59a",
+                        "on-primary-container": "#5f0e06",
+                        "secondary": "#496552",
+                        "background": "#fff8f6",
+                        "primary-container": "#e87461",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#324c3b",
+                        "inverse-on-surface": "#ffede7",
+                        "on-tertiary-container": "#4e220f",
+                        "surface-container-low": "#fff1ec",
+                        "surface-dim": "#e8d6d1",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#382e2a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "stack-gap": "24px",
+                        "margin-mobile": "24px",
+                        "touch-target-min": "48px",
+                        "unit": "8px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-lg": ["16px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-[#FFFBF7] dark:bg-stone-950 docked full-width top-0 sticky shadow-sm dark:shadow-none transition-all duration-300 ease-in-out active:scale-95 flex justify-between items-center w-full px-6 h-16 border-b border-orange-100 dark:border-stone-800 z-40">
+<div class="flex items-center gap-4">
+<button class="text-[#E87461] dark:text-[#F29688] flex items-center justify-center w-touch-target-min h-touch-target-min hover:bg-orange-50 dark:hover:bg-stone-900 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_SANS'] font-semibold tracking-tight text-[#E87461] text-headline-sm">Vaccination Schedule</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high">
+<img alt="Mother's profile photo" class="w-full h-full object-cover" data-alt="A close-up portrait of a caring, professional woman with a warm smile. She is in a softly lit, modern interior space with a clean, light-mode aesthetic. The lighting is diffused and flattering, creating a sense of trust and approachability suitable for a healthcare app profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBrm2FAbpa3-N1YD2T6r5hrtOuBCHMUA55pdmnM2uK8pP1S2hb8Gl6Z2pY0q2sZyJgTjDFpzonwSrYfxOz4ehDoY1J4BDUVIUrJhboIA5MHj3JZeaeuH25cDY0B2tRlV9xZJONh86y_MjY9VQ-oJI6VWZ4fXiTAmFfjUTki_B9btx9KVFHNO8J3-_Xhxqs1ud-C6DxjvemprDN0bgORr4dPxB7a7nXXrjhR73W-Urmvqtzjh3I-nHSWmrJQ8SmJAEjnWPWR6hrlo4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-gutter pt-stack-gap pb-stack-gap max-w-3xl mx-auto flex flex-col gap-stack-gap">
+<!-- Filter Chips -->
+<section class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="flex items-center justify-center px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md shrink-0 border border-transparent">
+                All
+            </button>
+<button class="flex items-center justify-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0 border border-outline-variant">
+                Completed
+            </button>
+<button class="flex items-center justify-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0 border border-outline-variant">
+                Upcoming
+            </button>
+<button class="flex items-center justify-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md shrink-0 border border-outline-variant">
+                Missed
+            </button>
+</section>
+<!-- Progress Summary -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-outline-variant/30 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-on-surface">Immunization Progress</span>
+<span class="font-label-md text-primary">15 of 21 doses</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 71%;"></div>
+</div>
+</section>
+<!-- Horizontal Timeline -->
+<section class="py-4 overflow-x-auto no-scrollbar relative">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-container-high -translate-y-1/2 z-0 min-w-[500px]"></div>
+<div class="flex justify-between items-center relative z-10 min-w-[500px] px-2">
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-secondary border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-secondary">Birth</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-secondary border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-secondary">6W</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-secondary border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-secondary">10W</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-5 h-5 rounded-full bg-primary-container border-4 border-surface-container-lowest shadow-sm flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<span class="font-label-md text-[12px] text-primary-container font-bold">14W</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant">6M</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant">9M</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest border-2 border-surface-container-lowest"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant">12M</span>
+</div>
+</div>
+</section>
+<!-- Grouped Cards -->
+<section class="flex flex-col gap-6">
+<!-- Group: 14 Weeks (Upcoming) -->
+<div class="flex flex-col gap-3">
+<h2 class="font-headline-sm text-on-surface px-2">Due at 14 Weeks</h2>
+<!-- Upcoming Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(161,62,47,0.05)] border border-outline-variant/20 overflow-hidden relative p-4 flex justify-between items-center gap-4">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-primary-container"></div>
+<div class="flex flex-col flex-1 pl-2">
+<span class="font-label-lg text-on-surface">Pentavalent 3</span>
+<span class="font-body-md text-sm text-on-surface-variant line-clamp-1">Prevents Diphtheria, Pertussis, Tetanus</span>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-label-md text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Due Nov 15
+                        </span>
+</div>
+</div>
+<!-- Upcoming Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_8px_rgba(161,62,47,0.05)] border border-outline-variant/20 overflow-hidden relative p-4 flex justify-between items-center gap-4">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-primary-container"></div>
+<div class="flex flex-col flex-1 pl-2">
+<span class="font-label-lg text-on-surface">OPV 3</span>
+<span class="font-body-md text-sm text-on-surface-variant line-clamp-1">Prevents Polio (Oral)</span>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-label-md text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Due Nov 15
+                        </span>
+</div>
+</div>
+</div>
+<!-- Group: 10 Weeks (Completed) -->
+<div class="flex flex-col gap-3 opacity-75">
+<h2 class="font-headline-sm text-on-surface-variant px-2">Completed at 10 Weeks</h2>
+<!-- Completed Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative p-4 flex justify-between items-center gap-4">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-secondary opacity-50"></div>
+<div class="flex flex-col flex-1 pl-2">
+<span class="font-label-lg text-on-surface-variant">Pentavalent 2</span>
+<span class="font-body-md text-sm text-on-surface-variant/70 line-clamp-1">Prevents Diphtheria, Pertussis, Tetanus</span>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-label-md text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            Oct 12
+                        </span>
+</div>
+</div>
+</div>
+<!-- Group: Future (9 Months) -->
+<div class="flex flex-col gap-3 opacity-50">
+<h2 class="font-headline-sm text-on-surface-variant px-2">Future: 9 Months</h2>
+<!-- Future Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden relative p-4 flex justify-between items-center gap-4">
+<div class="absolute left-0 top-0 bottom-0 w-[4px] bg-surface-container-highest"></div>
+<div class="flex flex-col flex-1 pl-2">
+<span class="font-label-lg text-on-surface-variant">Measles &amp; Rubella 1</span>
+<span class="font-body-md text-sm text-on-surface-variant/70 line-clamp-1">Prevents Measles and Rubella</span>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-label-md text-on-surface-variant/50">
+                            May 2024
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<div class="h-8"></div> <!-- Spacer for bottom nav -->
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-white/90 dark:bg-stone-900/90 backdrop-blur-md fixed bottom-0 w-full z-50 rounded-t-2xl shadow-[0_-4px_12px_rgba(232,116,97,0.08)] fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 md:hidden">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#E87461] tap-highlight-transparent transition-transform duration-200 min-w-touch-target-min min-h-touch-target-min" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">home</span>
+<span class="font-['Plus_Jakarta_SANS'] text-[12px] font-medium">Home</span>
+</a>
+<!-- Schedule (Active) -->
+<a class="flex flex-col items-center justify-center text-[#E87461] dark:text-[#F29688] scale-105 hover:text-[#E87461] tap-highlight-transparent transition-transform duration-200 min-w-touch-target-min min-h-touch-target-min" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" style="font-variation-settings: 'FILL' 1;">event_upcoming</span>
+<span class="font-['Plus_Jakarta_SANS'] text-[12px] font-medium">Schedule</span>
+</a>
+<!-- Growth (Inactive) -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#E87461] tap-highlight-transparent transition-transform duration-200 min-w-touch-target-min min-h-touch-target-min" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">monitoring</span>
+<span class="font-['Plus_Jakarta_SANS'] text-[12px] font-medium">Growth</span>
+</a>
+<!-- Support (Inactive) -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#E87461] tap-highlight-transparent transition-transform duration-200 min-w-touch-target-min min-h-touch-target-min" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">chat_bubble</span>
+<span class="font-['Plus_Jakarta_SANS'] text-[12px] font-medium">Support</span>
+</a>
+</nav>
+</body></html>

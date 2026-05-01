@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shishu-Sneh | AI Nutrition Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline-variant": "#ddc0bb",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#6b3925",
+                "on-secondary-container": "#4f6b58",
+                "surface-tint": "#a13e2f",
+                "outline": "#8a726d",
+                "secondary-fixed": "#cbead3",
+                "on-tertiary-fixed": "#350f02",
+                "on-primary-fixed": "#400100",
+                "surface-variant": "#f0dfd9",
+                "secondary-container": "#cbead3",
+                "tertiary": "#88503a",
+                "secondary": "#496552",
+                "on-error-container": "#93000a",
+                "surface-dim": "#e8d6d1",
+                "surface-bright": "#fff8f6",
+                "secondary-fixed-dim": "#b0ceb7",
+                "on-tertiary-container": "#4e220f",
+                "primary": "#a13e2f",
+                "primary-fixed": "#ffdad4",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#feb59a",
+                "on-secondary-fixed-variant": "#324c3b",
+                "on-secondary": "#ffffff",
+                "on-surface": "#221a16",
+                "primary-fixed-dim": "#ffb4a7",
+                "inverse-primary": "#ffb4a7",
+                "on-secondary-fixed": "#062012",
+                "on-error": "#ffffff",
+                "on-background": "#221a16",
+                "inverse-surface": "#382e2a",
+                "surface-container-low": "#fff1ec",
+                "surface": "#fff8f6",
+                "on-surface-variant": "#56423e",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed-variant": "#81271b",
+                "on-primary-container": "#5f0e06",
+                "inverse-on-surface": "#ffede7",
+                "surface-container-high": "#f6e5df",
+                "background": "#fff8f6",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#e87461",
+                "surface-container-highest": "#f0dfd9",
+                "error": "#ba1a1a",
+                "tertiary-container": "#c8866d",
+                "surface-container": "#fceae4",
+                "tertiary-fixed": "#ffdbce"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter": "16px",
+                "unit": "8px",
+                "touch-target-min": "48px",
+                "stack-gap": "24px",
+                "margin-mobile": "24px"
+        },
+        "fontFamily": {
+                "label-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-sm": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-lg": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "18px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-shadow {
+            box-shadow: 0 4px 12px rgba(232, 116, 97, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 flex justify-between items-center w-full px-4 py-4 bg-opacity-90 backdrop-blur-md border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95 duration-150 text-on-surface">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm tracking-tight text-on-surface font-bold">Nutrition Guide</h1>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-primary-container/20 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[11px] font-bold tracking-wider text-primary">AI Powered</span>
+</div>
+</header>
+<main class="max-w-md mx-auto px-4 pt-6 pb-32 space-y-6">
+<!-- Input Section (Floating Card) -->
+<section class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(232,116,97,0.06)] border border-surface-container-highest space-y-6">
+<!-- Age Selector -->
+<div class="space-y-3">
+<label class="font-label-lg text-on-surface-variant block">Baby's Age</label>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant rounded-2xl p-2 h-[56px]">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-headline-sm text-primary">8 months</span>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Ingredients Input -->
+<div class="space-y-3">
+<label class="font-label-lg text-on-surface-variant block">Ingredients</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
+<input class="w-full h-[52px] bg-surface-container-low border border-outline-variant rounded-2xl pl-12 pr-4 font-body-md text-on-surface focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="E.g. Apple, Oats..." type="text"/>
+</div>
+<button class="h-[52px] px-6 bg-surface-container-highest text-on-surface font-label-md rounded-2xl active:scale-95 transition-transform hover:bg-surface-variant">
+                    Add
+                </button>
+</div>
+<!-- Selected Chips -->
+<div class="flex flex-wrap gap-2 pt-2">
+<div class="flex items-center gap-2 bg-surface border border-outline-variant text-on-surface px-3 py-1.5 rounded-full font-label-md shadow-sm">
+<span class="text-[16px]">🌾</span> Rice
+                    <button class="text-on-surface-variant hover:text-error ml-1 flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="close">close</span></button>
+</div>
+<div class="flex items-center gap-2 bg-surface border border-outline-variant text-on-surface px-3 py-1.5 rounded-full font-label-md shadow-sm">
+<span class="text-[16px]">🫘</span> Dal
+                    <button class="text-on-surface-variant hover:text-error ml-1 flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="close">close</span></button>
+</div>
+<div class="flex items-center gap-2 bg-surface border border-outline-variant text-on-surface px-3 py-1.5 rounded-full font-label-md shadow-sm">
+<span class="text-[16px]">🍌</span> Banana
+                    <button class="text-on-surface-variant hover:text-error ml-1 flex items-center"><span class="material-symbols-outlined text-[16px]" data-icon="close">close</span></button>
+</div>
+</div>
+</div>
+<!-- Generate Button -->
+<button class="w-full h-[56px] bg-gradient-to-r from-primary to-primary-container text-white font-headline-sm rounded-2xl shadow-[0_8px_20px_rgba(232,116,97,0.25)] active:scale-[0.98] transition-all hover:opacity-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Generate Recipe
+            </button>
+</section>
+<!-- Result Section (Premium Recipe Card) -->
+<section class="bg-white rounded-[32px] overflow-hidden shadow-[0_12px_40px_rgba(232,116,97,0.08)] border border-surface-container-highest">
+<!-- Hero Image -->
+<div class="relative w-full aspect-[4/3] bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A warm and appetizing close-up of a baby-friendly meal featuring smooth yellow dal khichdi and pale yellow banana mash in a small ceramic bowl. The lighting is soft and golden, suggesting a cozy home kitchen at midday." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvnJMc0jzfrWkcdKwrCoMWybn2VBRS7wog2W1Koh5u-IFrcwab1oI2OqdCWvy-TWq0OaxkROnyYuOSJ6YMD6wzFUD81KZU0JpRIfA_C0d3RmBAPQFPcup4G7Rj6Ih1Gs_fNlaCYvhJDkm8Q7gnwOrGlCny3fi5Tyolzxj_JhvAk2SYSa7Ma6eGma46v-0PkKZ-OLwR_uYcnwTmlLmtouMr7dTX-wu6VGPyrRefuCdeEYQoJIv_W9q-tIox-Hy2Lgu4snrIkUGHGvw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<h2 class="font-headline-md text-white font-bold leading-tight drop-shadow-md">Dal-Rice Khichdi with Banana</h2>
+</div>
+</div>
+<div class="p-6 space-y-8">
+<!-- Nutritional Highlights -->
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-blue-50 text-blue-700 font-label-md rounded-full border border-blue-100">Protein</span>
+<span class="px-3 py-1 bg-red-50 text-red-700 font-label-md rounded-full border border-red-100">Iron</span>
+<span class="px-3 py-1 bg-yellow-50 text-yellow-700 font-label-md rounded-full border border-yellow-100">Potassium</span>
+<span class="px-3 py-1 bg-green-50 text-green-700 font-label-md rounded-full border border-green-100">Fiber</span>
+</div>
+<!-- Instructions -->
+<div class="space-y-4 relative">
+<div class="absolute left-[15px] top-4 bottom-4 w-0.5 bg-surface-container-highest"></div>
+<div class="relative z-10 flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-bold flex items-center justify-center shrink-0 shadow-sm border-2 border-white">1</div>
+<p class="text-on-surface font-body-md pt-1 pb-4">Pressure cook rice and dal together until they are very soft and mushy.</p>
+</div>
+<div class="relative z-10 flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-bold flex items-center justify-center shrink-0 shadow-sm border-2 border-white">2</div>
+<p class="text-on-surface font-body-md pt-1 pb-4">Mash the mixture thoroughly with a clean ladle or masher.</p>
+</div>
+<div class="relative z-10 flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-bold flex items-center justify-center shrink-0 shadow-sm border-2 border-white">3</div>
+<p class="text-on-surface font-body-md pt-1 pb-4">Peel and mash a ripe banana separately, then stir into the warm khichdi.</p>
+</div>
+<div class="relative z-10 flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container font-bold flex items-center justify-center shrink-0 shadow-sm border-2 border-white">4</div>
+<p class="text-on-surface font-body-md pt-1">Serve lukewarm. The natural sweetness of banana helps babies enjoy the taste.</p>
+</div>
+</div>
+<!-- Safety Note -->
+<div class="bg-amber-50 border border-amber-200/50 p-4 rounded-2xl flex gap-3 items-start">
+<span class="material-symbols-outlined text-amber-600 mt-0.5" data-icon="health_and_safety" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+<p class="text-amber-900 text-[14px] leading-snug">
+<span class="font-bold">Safety:</span> Ensure smooth consistency for 8-month-olds to prevent choking.
+                    </p>
+</div>
+<!-- Footer Info -->
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-highest text-on-surface-variant font-label-md text-[13px]">
+<div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" data-icon="restaurant_menu">restaurant_menu</span> 2-3 tbsp</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span> Twice daily</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span> Prep: 15 mins</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-stone-900 border-t border-surface-container-highest shadow-[0_-8px_30px_rgb(232,116,97,0.05)] rounded-t-[32px] flex justify-around items-center px-4 pb-8 pt-3">
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:opacity-80 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-[12px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:opacity-80 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-[12px]">Growth</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:opacity-80 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="vaccines">vaccines</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-[12px]">Vaccines</span>
+</button>
+<!-- ACTIVE TAB: Care -->
+<button class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-2xl px-5 py-2 active-nav-shadow active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="child_care" style="font-variation-settings: 'FILL' 1;">child_care</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-[12px]">Care</span>
+</button>
+</nav>
+</body></html>

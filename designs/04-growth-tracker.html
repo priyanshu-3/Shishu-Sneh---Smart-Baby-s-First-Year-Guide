@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shishu-Sneh Growth Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#5f0e06",
+                        "on-tertiary-fixed": "#350f02",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#fceae4",
+                        "on-background": "#221a16",
+                        "on-primary-fixed": "#400100",
+                        "outline-variant": "#ddc0bb",
+                        "tertiary-container": "#c8866d",
+                        "surface-tint": "#a13e2f",
+                        "surface-container-high": "#f6e5df",
+                        "surface-container-highest": "#f0dfd9",
+                        "on-tertiary-container": "#4e220f",
+                        "on-secondary-fixed": "#062012",
+                        "primary-fixed": "#ffdad4",
+                        "on-surface": "#221a16",
+                        "tertiary": "#88503a",
+                        "surface-container-low": "#fff1ec",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f6",
+                        "surface": "#fff8f6",
+                        "secondary": "#496552",
+                        "on-secondary-container": "#4f6b58",
+                        "inverse-primary": "#ffb4a7",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#f0dfd9",
+                        "primary-fixed-dim": "#ffb4a7",
+                        "surface-dim": "#e8d6d1",
+                        "surface-bright": "#fff8f6",
+                        "secondary-container": "#cbead3",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#324c3b",
+                        "inverse-on-surface": "#ffede7",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6b3925",
+                        "on-surface-variant": "#56423e",
+                        "tertiary-fixed": "#ffdbce",
+                        "secondary-fixed": "#cbead3",
+                        "on-primary-fixed-variant": "#81271b",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#8a726d",
+                        "primary": "#a13e2f",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b0ceb7",
+                        "tertiary-fixed-dim": "#feb59a",
+                        "primary-container": "#e87461",
+                        "inverse-surface": "#382e2a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-gap": "24px",
+                        "unit": "8px",
+                        "margin-mobile": "24px",
+                        "gutter": "16px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "18px", "fontWeight": "600"}],
+                        "label-lg": ["16px", {"lineHeight": "20px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcfcfc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .growth-chart-gradient {
+            background: linear-gradient(180deg, rgba(232, 116, 97, 0.15) 0%, rgba(232, 116, 97, 0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-slate-800 selection:bg-primary-container selection:text-white">
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm flex justify-between items-center px-4 py-3 h-16">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-50 transition-colors active:scale-95 duration-150 text-slate-700">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-slate-800">Growth Tracker</h1>
+</div>
+<div class="flex items-center bg-slate-100 rounded-full p-1">
+<button class="px-3 py-1 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700">3M</button>
+<button class="px-3 py-1 rounded-full text-xs font-semibold bg-white text-primary shadow-sm">6M</button>
+<button class="px-3 py-1 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700">1Y</button>
+</div>
+</header>
+<main class="pt-20 pb-32 max-w-2xl mx-auto space-y-6">
+<!-- Stat Banner -->
+<section class="pl-4 pr-4">
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 pt-2 snap-x">
+<!-- Weight Card -->
+<div class="snap-start shrink-0 w-[160px] p-4 rounded-2xl bg-[#FFF5F3] border border-[#FFE4DE] shadow-sm flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-slate-600">Weight</span>
+<span class="material-symbols-outlined text-[#E87461] text-[20px]" data-icon="scale">scale</span>
+</div>
+<div>
+<div class="font-headline-md text-slate-800">7.2 <span class="text-sm text-slate-500 font-normal">kg</span></div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-green-600 text-[14px]">arrow_upward</span>
+<span class="text-xs font-medium text-green-700">+0.4 from last mo</span>
+</div>
+</div>
+</div>
+<!-- Height Card -->
+<div class="snap-start shrink-0 w-[160px] p-4 rounded-2xl bg-[#FFF8F0] border border-[#FFEDDE] shadow-sm flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-slate-600">Height</span>
+<span class="material-symbols-outlined text-[#E8A561] text-[20px]" data-icon="straighten">straighten</span>
+</div>
+<div>
+<div class="font-headline-md text-slate-800">68 <span class="text-sm text-slate-500 font-normal">cm</span></div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-green-600 text-[14px]">arrow_upward</span>
+<span class="text-xs font-medium text-green-700">+3 from last mo</span>
+</div>
+</div>
+</div>
+<!-- Head Card -->
+<div class="snap-start shrink-0 w-[160px] p-4 rounded-2xl bg-[#F8F7F5] border border-[#EAE8E2] shadow-sm flex flex-col justify-between h-[120px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-slate-600">Head Circ.</span>
+<span class="material-symbols-outlined text-[#A69B8A] text-[20px]" data-icon="face_6">face_6</span>
+</div>
+<div>
+<div class="font-headline-md text-slate-800">43 <span class="text-sm text-slate-500 font-normal">cm</span></div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-slate-400 text-[14px]">horizontal_rule</span>
+<span class="text-xs font-medium text-slate-500">Unchanged</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Growth Chart Section -->
+<section class="px-4">
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 overflow-hidden relative">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-sm text-slate-800">Weight Trend</h2>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-600">more_horiz</button>
+</div>
+<div class="relative h-64 w-full">
+<!-- Standard Range Band -->
+<div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 200">
+<path d="M0,170 Q100,160 200,110 T400,60 L400,30 Q300,60 200,90 T0,140 Z" fill="#f0fdf4" opacity="0.8"></path>
+<text class="text-[9px] fill-green-700 font-semibold opacity-70" x="310" y="80">WHO Standard Range</text>
+</svg>
+</div>
+<!-- Grid Lines & Y-Axis -->
+<div class="absolute inset-0 flex flex-col justify-between py-2 z-10 pointer-events-none">
+<div class="w-full border-b border-slate-100 border-dashed flex items-end pb-1 text-[10px] text-slate-400">8.0 kg</div>
+<div class="w-full border-b border-slate-100 border-dashed flex items-end pb-1 text-[10px] text-slate-400">6.5 kg</div>
+<div class="w-full border-b border-slate-100 border-dashed flex items-end pb-1 text-[10px] text-slate-400">5.0 kg</div>
+<div class="w-full border-b border-slate-100 border-dashed flex items-end pb-1 text-[10px] text-slate-400">3.5 kg</div>
+</div>
+<!-- SVG Chart -->
+<svg class="absolute inset-0 w-full h-full overflow-visible z-20" preserveaspectratio="none" viewbox="0 0 400 200">
+<!-- Area under curve -->
+<path d="M0,180 Q50,160 100,150 T200,100 T300,70 T400,40 V200 H0 Z" fill="url(#chartGradient)" opacity="0.8"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#E87461;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#E87461;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Trend line -->
+<path d="M0,180 Q50,160 100,150 T200,100 T300,70 T400,40" fill="none" stroke="#E87461" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Data points -->
+<circle cx="0" cy="180" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="50" cy="160" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="100" cy="150" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="150" cy="130" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="200" cy="100" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="250" cy="85" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="300" cy="70" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="350" cy="55" fill="#ffffff" r="5" stroke="#E87461" stroke-width="2"></circle>
+<circle cx="400" cy="40" fill="#E87461" r="6" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute -bottom-8 left-0 w-full flex justify-between px-0 font-label-md text-slate-400 text-xs">
+<span>M1</span>
+<span>M2</span>
+<span>M3</span>
+<span>M4</span>
+<span>M5</span>
+<span>M6</span>
+<span>M7</span>
+<span>M8</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Milestones Timeline -->
+<section class="px-4 pt-6 space-y-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-sm text-slate-800">Recent Milestones</h2>
+<button class="text-sm font-semibold text-primary">View All</button>
+</div>
+<div class="relative border-l-2 border-slate-100 ml-4 space-y-6">
+<!-- Entry 1 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-sm"></div>
+<div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-bold uppercase tracking-wider rounded-md">Apr 15</span>
+<div class="flex gap-3 text-right">
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">WT</p>
+<p class="font-label-md text-slate-800">7.2kg</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">HT</p>
+<p class="font-label-md text-slate-800">68cm</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-slate-700 font-medium">Crawling confidently around the living room.</p>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-300 rounded-full border-4 border-white shadow-sm"></div>
+<div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-bold uppercase tracking-wider rounded-md">Mar 10</span>
+<div class="flex gap-3 text-right">
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">WT</p>
+<p class="font-label-md text-slate-800">6.8kg</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">HT</p>
+<p class="font-label-md text-slate-800">65cm</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-slate-700 font-medium">First tooth appeared!</p>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-300 rounded-full border-4 border-white shadow-sm"></div>
+<div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] font-bold uppercase tracking-wider rounded-md">Feb 5</span>
+<div class="flex gap-3 text-right">
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">WT</p>
+<p class="font-label-md text-slate-800">6.2kg</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase font-bold">HT</p>
+<p class="font-label-md text-slate-800">62cm</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-slate-700 font-medium">Sitting without support.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Extended FAB -->
+<button class="fixed bottom-28 right-6 bg-gradient-to-br from-primary to-[#E87461] text-white rounded-full shadow-lg shadow-orange-200/50 flex items-center justify-center px-5 py-3 hover:scale-105 active:scale-95 transition-transform z-40 gap-2">
+<span class="material-symbols-outlined text-[24px]" data-icon="add">add</span>
+<span class="font-label-md font-bold">Log Entry</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 h-24 bg-white dark:bg-stone-900 border-t border-orange-50 dark:border-stone-800 shadow-[0_-4px_20px_0_rgba(232,116,97,0.08)] rounded-t-[32px]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-1.5 hover:text-orange-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 rounded-2xl px-5 py-1.5 active:scale-90 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring" data-weight="fill">monitoring</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-bold mt-1">Growth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-1.5 hover:text-orange-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="vaccines">vaccines</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-medium mt-1">Vaccines</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-1.5 hover:text-orange-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-medium mt-1">Milestones</span>
+</a>
+</nav>
+</body></html>
