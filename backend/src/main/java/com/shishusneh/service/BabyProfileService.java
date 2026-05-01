@@ -7,6 +7,7 @@ import com.shishusneh.repository.HealthLogRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Service layer for managing baby profiles and health logs.
@@ -37,7 +38,7 @@ public class BabyProfileService {
      */
     public BabyProfile getBabyById(Long id) {
         return babyProfileRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Baby profile not found with id: " + id));
+                .orElseThrow(() -> new NoSuchElementException("Baby profile not found with id: " + id));
     }
 
     /**
