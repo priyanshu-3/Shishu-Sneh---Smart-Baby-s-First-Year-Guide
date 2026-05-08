@@ -108,7 +108,13 @@ public class GeminiNutritionService {
                 - Keep the recipe practical with minimal cooking equipment.
                 - Focus on locally available, affordable ingredients.
                 
-                Format the response in a clear, easy-to-read manner.
+                CRITICAL FORMATTING INSTRUCTIONS:
+                - Do NOT use ANY markdown characters such as asterisks (*), bold formatting (**), or hashes (#).
+                - Use plain text only.
+                - Use emojis to make the text look beautiful, friendly, and professional.
+                - Separate sections with blank lines for readability.
+                - First, provide the complete response in ENGLISH.
+                - Then, provide the complete translation of the response in KANNADA.
                 """, ageInMonths, ingredientList, ageInMonths);
     }
 

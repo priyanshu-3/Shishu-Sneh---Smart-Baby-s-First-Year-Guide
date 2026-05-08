@@ -96,6 +96,20 @@ public class BabyController {
         return ResponseEntity.ok(schedule);
     }
 
+    /**
+     * Mark a vaccine as completed or undo completion.
+     *
+     * POST /api/baby/{id}/vaccines/mark
+     * Body: { "vaccineName": "BCG", "completed": true }
+     */
+    @PostMapping("/{id}/vaccines/mark")
+    public ResponseEntity<BabyProfile> markVaccine(
+            @PathVariable Long id,
+            @Valid @RequestBody com.shishusneh.dto.VaccineMarkRequest request) {
+        BabyProfile updated = babyProfileService.toggleVaccineCompletion(id, request.getVaccineName(), request.isCompleted());
+        return ResponseEntity.ok(updated);
+    }
+
     // ═══════════════════════════════════════════
     //  Health Log Endpoints (Growth Tracking)
     // ═══════════════════════════════════════════

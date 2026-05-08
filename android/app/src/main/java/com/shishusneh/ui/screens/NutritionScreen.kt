@@ -6,18 +6,26 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shishusneh.ui.theme.*
+
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun NutritionScreen(
     guide: String,
@@ -29,96 +37,204 @@ fun NutritionScreen(
     val ingredients = listOf("🍚 Rice", "🫘 Dal", "🍌 Banana", "🥔 Potato", "🥕 Carrot", "🍠 Sweet Potato", "🥚 Egg", "🍎 Apple", "🥛 Milk", "🌾 Ragi")
     val selected = remember { mutableStateListOf<String>() }
 
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-        Box(
-            Modifier.fillMaxWidth().clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-                .background(Brush.linearGradient(listOf(Gold, Color(0xFFE8B838), Color(0xFFF5D08A))))
-                .padding(horizontal = 24.dp, vertical = 40.dp)
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Cream)
+    ) {
+        // Sticky Header
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .background(Cream.copy(alpha = 0.9f))
+                .border(1.dp, SurfaceContainer, RoundedCornerShape(0.dp))
+                .padding(horizontal = 24.dp, vertical = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
-                Text("🍲", fontSize = 40.sp)
-                Spacer(Modifier.height(8.dp))
-                Text("AI Nutrition Guide", fontSize = 26.sp, fontWeight = FontWeight.ExtraBold, color = Color.White)
-                Text("Powered by Google Gemini", fontSize = 14.sp, color = Color.White.copy(alpha = 0.9f))
+            Text(
+                "Nutrition Guide",
+                style = MaterialTheme.typography.titleLarge,
+                fontSize = 20.sp,
+                color = Coral
+            )
+            Row(
+                Modifier
+                    .background(CoralLight.copy(alpha = 0.1f), RoundedCornerShape(50))
+                    .border(1.dp, CoralLight.copy(alpha = 0.2f), RoundedCornerShape(50))
+                    .padding(horizontal = 12.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Coral, modifier = Modifier.size(14.dp))
+                Text(
+                    "AI Powered",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontSize = 11.sp,
+                    color = Coral,
+                    letterSpacing = 0.5.sp
+                )
             }
         }
 
-        Spacer(Modifier.height(20.dp))
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(horizontal = 24.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            Spacer(Modifier.height(24.dp))
 
-        // Age input
-        Card(Modifier.fillMaxWidth().padding(horizontal = 20.dp), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Color.White)) {
-            Column(Modifier.padding(20.dp)) {
-                Text("Baby's Age (months)", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Navy)
-                Spacer(Modifier.height(8.dp))
-                OutlinedTextField(value = age, onValueChange = { age = it }, placeholder = { Text("e.g. 8") }, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp), singleLine = true)
-            }
-        }
+            // Main Card
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .shadow(2.dp, RoundedCornerShape(24.dp), spotColor = Color(0x0A000000))
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(Color.White)
+                    .border(1.dp, SurfaceContainer, RoundedCornerShape(24.dp))
+                    .padding(24.dp),
+                verticalArrangement = Arrangement.spacedBy(24.dp)
+            ) {
+                // Age Input
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        "Baby's Age (Months)",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = NavyLight
+                    )
+                    OutlinedTextField(
+                        value = age,
+                        onValueChange = { age = it },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        textStyle = MaterialTheme.typography.headlineSmall.copy(color = Coral),
+                        modifier = Modifier.fillMaxWidth().height(56.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedContainerColor = Cream,
+                            unfocusedContainerColor = Cream,
+                            focusedBorderColor = CoralLight,
+                            unfocusedBorderColor = Slate.copy(alpha = 0.3f),
+                            cursorColor = Coral
+                        ),
+                        singleLine = true
+                    )
+                }
 
-        Spacer(Modifier.height(20.dp))
-
-        // Ingredients
-        Column(Modifier.padding(horizontal = 20.dp)) {
-            Text("Select Ingredients", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Navy)
-            Spacer(Modifier.height(12.dp))
-            // Simple wrapping layout
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                for (row in ingredients.chunked(3)) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        for (item in row) {
+                // Ingredients
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        "Select Ingredients",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = NavyLight
+                    )
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        for (item in ingredients) {
                             val name = item.split(" ").last()
+                            val icon = item.split(" ").first()
                             val isSelected = name in selected
-                            Surface(
-                                modifier = Modifier.clickable {
-                                    if (isSelected) selected.remove(name) else selected.add(name)
-                                },
-                                shape = RoundedCornerShape(50),
-                                color = if (isSelected) Coral else Cream,
-                                border = if (!isSelected) androidx.compose.foundation.BorderStroke(1.dp, Color(0x0F000000)) else null
+                            
+                            val bgColor = if (isSelected) Coral else Cream
+                            val contentColor = if (isSelected) Color.White else Navy
+                            val borderColor = if (isSelected) Coral else Slate.copy(alpha = 0.2f)
+
+                            Row(
+                                Modifier
+                                    .clip(RoundedCornerShape(50))
+                                    .clickable { if (isSelected) selected.remove(name) else selected.add(name) }
+                                    .background(bgColor)
+                                    .border(1.dp, borderColor, RoundedCornerShape(50))
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
+                                Text(icon, fontSize = 16.sp)
                                 Text(
-                                    item, Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
-                                    fontSize = 13.sp, fontWeight = FontWeight.Medium,
-                                    color = if (isSelected) Color.White else Navy
+                                    name,
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = contentColor
                                 )
                             }
                         }
                     }
                 }
-            }
-        }
 
-        Spacer(Modifier.height(20.dp))
-
-        Button(
-            onClick = {
-                val a = age.toIntOrNull()
-                if (a != null && selected.isNotEmpty()) onGenerate(a, selected.toList())
-            },
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-            enabled = !isLoading,
-            colors = ButtonDefaults.buttonColors(containerColor = Coral),
-            shape = RoundedCornerShape(50)
-        ) {
-            if (isLoading) {
-                CircularProgressIndicator(Modifier.size(20.dp), color = Color.White, strokeWidth = 2.dp)
-                Spacer(Modifier.width(8.dp))
-                Text("Gemini is thinking...")
-            } else {
-                Text("✨ Generate Feeding Guide", Modifier.padding(vertical = 6.dp))
+                // Generate Button
+                Button(
+                    onClick = {
+                        val a = age.toIntOrNull()
+                        if (a != null && selected.isNotEmpty()) onGenerate(a, selected.toList())
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = Coral.copy(alpha = 0.4f)),
+                    enabled = !isLoading,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    contentPadding = PaddingValues(),
+                    shape = RoundedCornerShape(16.dp)
+                ) {
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .background(Brush.horizontalGradient(listOf(Coral, CoralLight))),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            if (isLoading) {
+                                CircularProgressIndicator(Modifier.size(20.dp), color = Color.White, strokeWidth = 2.dp)
+                                Text("Generating recipe...", style = MaterialTheme.typography.titleMedium, color = Color.White)
+                            } else {
+                                Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Color.White, modifier = Modifier.size(20.dp))
+                                Text("Generate Recipe", style = MaterialTheme.typography.titleMedium, color = Color.White)
+                            }
+                        }
+                    }
+                }
             }
-        }
 
-        // Result
-        if (guide.isNotBlank()) {
-            Spacer(Modifier.height(20.dp))
-            Card(
-                Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-                shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFBF0))
-            ) {
-                Text(guide, Modifier.padding(20.dp), fontSize = 14.sp, lineHeight = 22.sp, color = NavyLight)
+            // Result
+            if (guide.isNotBlank() && !isLoading) {
+                Spacer(Modifier.height(24.dp))
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .shadow(4.dp, RoundedCornerShape(32.dp), spotColor = Color(0x0A000000))
+                        .clip(RoundedCornerShape(32.dp))
+                        .background(Color.White)
+                        .border(1.dp, SurfaceContainer, RoundedCornerShape(32.dp))
+                ) {
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(4f / 3f)
+                            .background(SurfaceDim),
+                        contentAlignment = Alignment.BottomStart
+                    ) {
+                        // Simulated image overlay gradient
+                        Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.6f)))))
+                        Text(
+                            "AI Nutrition Guide",
+                            Modifier.padding(16.dp),
+                            style = MaterialTheme.typography.headlineSmall,
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Text(
+                        guide,
+                        Modifier.padding(24.dp),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = NavyLight,
+                        lineHeight = 24.sp
+                    )
+                }
             }
+            Spacer(Modifier.height(120.dp))
         }
-        Spacer(Modifier.height(100.dp))
     }
 }
+

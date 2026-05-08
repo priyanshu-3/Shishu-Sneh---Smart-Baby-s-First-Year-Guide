@@ -193,6 +193,16 @@ public class VaccinationService {
                 false
         ));
 
+        // Update completion status based on user's profile
+        List<String> completedVaccines = profile.getCompletedVaccines();
+        if (completedVaccines != null) {
+            for (VaccinationScheduleItem item : schedule) {
+                if (completedVaccines.contains(item.getVaccineName())) {
+                    item.setCompleted(true);
+                }
+            }
+        }
+
         return schedule;
     }
 }

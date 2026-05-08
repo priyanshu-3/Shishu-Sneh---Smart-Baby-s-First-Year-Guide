@@ -3,27 +3,31 @@ package com.shishusneh.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Primary — Warm Coral
-val Coral = Color(0xFFE8725A)
-val CoralLight = Color(0xFFF09A88)
-val CoralDark = Color(0xFFD45A42)
+val Coral = Color(0xFFA13E2F)
+val CoralLight = Color(0xFFE87461)
+val CoralDark = Color(0xFF5F0E06)
 
 // Secondary — Sage Green
-val Sage = Color(0xFF7BAE8E)
-val SageLight = Color(0xFFA8D4B8)
-val SageDark = Color(0xFF5A8E6E)
+val Sage = Color(0xFF496552)
+val SageLight = Color(0xFFCBEAD3)
+val SageDark = Color(0xFF4F6B58)
 
-// Surfaces
-val Cream = Color(0xFFFFF8F2)
-val CreamDark = Color(0xFFF5EDE6)
-val BgPrimary = Color(0xFFFDFAF7)
+// Tertiary - Terracotta
+val Terracotta = Color(0xFF88503A)
+val TerracottaLight = Color(0xFFC8866D)
+val TerracottaDark = Color(0xFF4E220F)
 
-// Neutrals
-val Navy = Color(0xFF2D3748)
-val NavyLight = Color(0xFF4A5568)
-val Slate = Color(0xFF718096)
+// Surfaces & Background
+val Cream = Color(0xFFFFF8F6)
+val SurfaceDim = Color(0xFFE8D6D1)
+val SurfaceContainer = Color(0xFFFCEAE4)
 
-// Accent
-val Gold = Color(0xFFE8A838)
-val Blue = Color(0xFF5B8DEF)
-val Red = Color(0xFFE85A5A)
-val Purple = Color(0xFF8B5CF6)
+// Neutrals (Typography)
+val Navy = Color(0xFF221A16)
+val NavyLight = Color(0xFF56423E)
+val Slate = Color(0xFF8A726D)
+
+// Status / Error
+val Red = Color(0xFFBA1A1A)
+val ErrorContainer = Color(0xFFFFDAD6)
+

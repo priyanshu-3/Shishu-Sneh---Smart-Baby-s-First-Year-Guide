@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 import com.shishusneh.ui.screens.*
@@ -45,7 +46,11 @@ fun ShishuSnehApp(vm: MainViewModel = viewModel()) {
     Scaffold(
         bottomBar = {
             if (currentRoute != Screen.Register.route) {
-                NavigationBar(containerColor = Color.White.copy(alpha = 0.92f)) {
+                NavigationBar(
+                    containerColor = Color.White,
+                    tonalElevation = 0.dp,
+                    contentColor = NavyLight
+                ) {
                     tabs.forEach { screen ->
                         NavigationBarItem(
                             icon = { Icon(screen.icon, screen.label) },
@@ -63,14 +68,16 @@ fun ShishuSnehApp(vm: MainViewModel = viewModel()) {
                             colors = NavigationBarItemDefaults.colors(
                                 selectedIconColor = Coral,
                                 selectedTextColor = Coral,
-                                indicatorColor = CoralLight.copy(alpha = 0.15f)
+                                indicatorColor = CoralLight.copy(alpha = 0.2f),
+                                unselectedIconColor = Slate,
+                                unselectedTextColor = Slate
                             )
                         )
                     }
                 }
             }
         },
-        containerColor = BgPrimary
+        containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
         NavHost(navController, Screen.Home.route, Modifier.padding(padding)) {
             composable(Screen.Home.route) {
@@ -88,10 +95,20 @@ fun ShishuSnehApp(vm: MainViewModel = viewModel()) {
                 }
             }
             composable(Screen.Vaccines.route) {
-                VaccinesScreen(vaccines = vm.vaccines, isLoading = vm.isLoading, onLoad = { vm.loadVaccines() })
+                VaccinesScreen(
+                    vaccines = vm.vaccines, 
+                    isLoading = vm.isLoading, 
+                    onLoad = { vm.loadVaccines() },
+                    onToggleVaccine = { v, done -> vm.toggleVaccine(v, done) }
+                )
             }
             composable(Screen.Growth.route) {
-                GrowthScreen(healthLogs = vm.healthLogs, isLoading = vm.isLoading, onLoad = { vm.loadHealthLogs() }) { d, w, h, m ->
+                GrowthScreen(
+                    healthLogs = vm.healthLogs,
+                    babyDob = vm.currentBaby?.dateOfBirth,
+                    isLoading = vm.isLoading,
+                    onLoad = { vm.loadHealthLogs() }
+                ) { d, w, h, m ->
                     vm.addHealthLog(d, w, h, m) {}
                 }
             }
@@ -115,3 +132,4 @@ fun ShishuSnehApp(vm: MainViewModel = viewModel()) {
         }
     }
 }
+

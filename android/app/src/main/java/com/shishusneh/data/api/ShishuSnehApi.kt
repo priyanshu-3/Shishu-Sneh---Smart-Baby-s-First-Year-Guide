@@ -43,6 +43,11 @@ data class NutritionResponse(
     val feedingGuide: String
 )
 
+data class VaccineMarkRequest(
+    val vaccineName: String,
+    val completed: Boolean
+)
+
 // ═══ Retrofit Service ═══
 interface ShishuSnehApi {
 
@@ -57,6 +62,9 @@ interface ShishuSnehApi {
 
     @GET("api/baby/{id}/vaccines")
     suspend fun getVaccines(@Path("id") id: Long): List<VaccineItem>
+
+    @POST("api/baby/{id}/vaccines/mark")
+    suspend fun markVaccine(@Path("id") id: Long, @Body request: VaccineMarkRequest): BabyProfile
 
     @POST("api/baby/{id}/health-log")
     suspend fun addHealthLog(@Path("id") id: Long, @Body log: HealthLog): HealthLog

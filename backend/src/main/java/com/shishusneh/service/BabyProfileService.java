@@ -63,4 +63,18 @@ public class BabyProfileService {
     public List<HealthLog> getHealthLogs(Long babyId) {
         return healthLogRepository.findByBabyProfileIdOrderByDateAsc(babyId);
     }
+
+    /**
+     * Toggle the completion status of a specific vaccine.
+     */
+    public BabyProfile toggleVaccineCompletion(Long babyId, String vaccineName, boolean completed) {
+        BabyProfile profile = getBabyById(babyId);
+        List<String> completedVaccines = profile.getCompletedVaccines();
+        if (completed && !completedVaccines.contains(vaccineName)) {
+            completedVaccines.add(vaccineName);
+        } else if (!completed) {
+            completedVaccines.remove(vaccineName);
+        }
+        return babyProfileRepository.save(profile);
+    }
 }

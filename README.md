@@ -205,5 +205,5 @@ Shishu-Sneh/
 ---
 
 <p align="center">
-  Made with ❤️ by <strong>Priyanshu Mehra</strong> · VTU · 1VE22CS119
+  Made by <strong>Priyanshu Mehra</strong> · VTU · 1VE22CS119
 </p>

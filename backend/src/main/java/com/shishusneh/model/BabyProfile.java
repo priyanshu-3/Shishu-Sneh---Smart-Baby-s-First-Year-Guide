@@ -46,6 +46,11 @@ public class BabyProfile {
     @JsonIgnore
     private List<HealthLog> healthLogs = new ArrayList<>();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "baby_completed_vaccines", joinColumns = @JoinColumn(name = "baby_id"))
+    @Column(name = "vaccine_name")
+    private List<String> completedVaccines = new ArrayList<>();
+
     public BabyProfile() {
     }
 
@@ -80,4 +85,7 @@ public class BabyProfile {
 
     public List<HealthLog> getHealthLogs() { return healthLogs; }
     public void setHealthLogs(List<HealthLog> healthLogs) { this.healthLogs = healthLogs; }
+
+    public List<String> getCompletedVaccines() { return completedVaccines; }
+    public void setCompletedVaccines(List<String> completedVaccines) { this.completedVaccines = completedVaccines; }
 }

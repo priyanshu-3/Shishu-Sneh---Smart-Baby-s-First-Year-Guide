@@ -87,5 +87,16 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun toggleVaccine(vaccine: VaccineItem, completed: Boolean) {
+        val id = currentBaby?.id ?: return
+        viewModelScope.launch {
+            isLoading = true; error = null
+            repo.markVaccine(id, vaccine.vaccineName, completed)
+                .onSuccess { loadVaccines() }
+                .onFailure { error = it.message }
+            isLoading = false
+        }
+    }
+
     fun clearError() { error = null }
 }

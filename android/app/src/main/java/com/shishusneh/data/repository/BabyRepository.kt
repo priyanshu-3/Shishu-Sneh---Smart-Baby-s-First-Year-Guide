@@ -24,4 +24,8 @@ class BabyRepository {
     suspend fun getNutrition(age: Int, ingredients: List<String>): Result<NutritionResponse> = runCatching {
         api.getNutrition(NutritionRequest(age, ingredients))
     }
+
+    suspend fun markVaccine(id: Long, name: String, completed: Boolean): Result<BabyProfile> = runCatching {
+        api.markVaccine(id, VaccineMarkRequest(name, completed))
+    }
 }

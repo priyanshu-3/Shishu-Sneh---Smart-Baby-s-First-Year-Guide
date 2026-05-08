@@ -1,16 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shishu-Sneh — Smart Baby's First Year Guide</title>
   <meta name="description" content="Shishu-Sneh helps new mothers track baby vaccinations, growth milestones, and get AI-powered nutrition guidance during the critical first year." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#fff8f6",
+            "surface-dim": "#e8d6d1",
+            "surface-bright": "#fff8f6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#fff1ec",
+            "surface-container": "#fceae4",
+            "surface-container-high": "#f6e5df",
+            "surface-container-highest": "#f0dfd9",
+            "on-surface": "#221a16",
+            "on-surface-variant": "#56423e",
+            "inverse-surface": "#382e2a",
+            "inverse-on-surface": "#ffede7",
+            "outline": "#8a726d",
+            "outline-variant": "#ddc0bb",
+            "surface-tint": "#a13e2f",
+            "primary": "#a13e2f",
+            "on-primary": "#ffffff",
+            "primary-container": "#e87461",
+            "on-primary-container": "#5f0e06",
+            "inverse-primary": "#ffb4a7",
+            "secondary": "#496552",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#cbead3",
+            "on-secondary-container": "#4f6b58",
+            "tertiary": "#88503a",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#c8866d",
+            "on-tertiary-container": "#4e220f",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#ffdad4",
+            "primary-fixed-dim": "#ffb4a7",
+            "on-primary-fixed": "#400100",
+            "on-primary-fixed-variant": "#81271b",
+            "secondary-fixed": "#cbead3",
+            "secondary-fixed-dim": "#b0ceb7",
+            "on-secondary-fixed": "#062012",
+            "on-secondary-fixed-variant": "#324c3b",
+            "tertiary-fixed": "#ffdbce",
+            "tertiary-fixed-dim": "#feb59a",
+            "on-tertiary-fixed": "#350f02",
+            "on-tertiary-fixed-variant": "#6b3925",
+            "background": "#fff8f6",
+            "on-background": "#221a16",
+            "surface-variant": "#f0dfd9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.5rem",
+            "sm": "0.25rem",
+            "md": "0.75rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "unit": "8px",
+            "margin-mobile": "24px",
+            "gutter": "16px",
+            "touch-target-min": "48px",
+            "stack-gap": "24px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+            "label-md": ["14px", {"lineHeight": "18px", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar,
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar, .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .active-nav-shadow {
+      box-shadow: 0 4px 12px rgba(232, 116, 97, 0.15);
+    }
+  </style>
   <link rel="stylesheet" href="/style.css" />
 </head>
-<body>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white pb-32">
+  <!-- Dynamic View Container -->
   <div id="app"></div>
   <script type="module" src="/main.js"></script>
 </body>
