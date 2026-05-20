@@ -133,8 +133,8 @@ fun NutritionScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         for (item in ingredients) {
-                            val name = item.split(" ").last()
-                            val icon = item.split(" ").first()
+                            val icon = item.substringBefore(" ")
+                            val name = item.substringAfter(" ")
                             val isSelected = name in selected
                             
                             val bgColor = if (isSelected) Coral else Cream

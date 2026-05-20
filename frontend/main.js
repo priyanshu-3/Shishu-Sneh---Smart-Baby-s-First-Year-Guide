@@ -252,7 +252,11 @@ function nutritionPage() {
           <div class="space-y-3">
               <label class="font-label-lg text-on-surface-variant block">Select Ingredients</label>
               <div class="flex flex-wrap gap-2 pt-2">
-                  ${ingredients.map(i => `<button class="chip flex items-center gap-2 bg-surface border border-outline-variant text-on-surface px-3 py-1.5 rounded-full font-label-md shadow-sm transition-all hover:bg-surface-variant" data-ingredient="${i.split(' ')[1]}"><span class="text-[16px]">${i.split(' ')[0]}</span> ${i.split(' ')[1]}</button>`).join('')}
+                  ${ingredients.map(i => {
+                      const icon = i.substring(0, i.indexOf(' '));
+                      const name = i.substring(i.indexOf(' ') + 1);
+                      return `<button class="chip flex items-center gap-2 bg-surface border border-outline-variant text-on-surface px-3 py-1.5 rounded-full font-label-md shadow-sm transition-all hover:bg-surface-variant" data-ingredient="${name}"><span class="text-[16px]">${icon}</span> ${name}</button>`;
+                  }).join('')}
               </div>
           </div>
           <button id="generateGuide" class="w-full h-[56px] bg-gradient-to-r from-primary to-primary-container text-white font-headline-sm rounded-2xl shadow-[0_8px_20px_rgba(232,116,97,0.25)] active:scale-[0.98] transition-all hover:opacity-95 flex items-center justify-center gap-2">

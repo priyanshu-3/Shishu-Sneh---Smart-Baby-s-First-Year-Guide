@@ -187,7 +187,7 @@ fun GrowthScreen(
                                             val logDate = LocalDate.parse(log.date)
                                             ChronoUnit.MONTHS.between(birthDate, logDate)
                                         } else null
-                                    } catch (e: Exception) {
+                                    } catch (_: Exception) {
                                         null
                                     }
                                 }
