@@ -28,9 +28,9 @@
 ## 1. Problem Statement
 
 New mothers in rural villages often cease **Exclusive Breastfeeding** ahead of recommended periods due to deep-seated cultural myths or immediate return-to-work pressures. Furthermore, once discharged from local hospitals, they lack a structured mechanism to monitor critical infant milestones, leading to:
-* ❌ **Missed Immunizations:** Lack of clear tracking against the Indian National Immunization Schedule.
-* ❌ **Nutritional Gaps:** Absence of structured guidance on weaning and infant nutrition during the critical first 12 months.
-* ❌ **Accessibility Barriers:** Lack of immediate, culturally relevant, and accessible expert medical guidance.
+*  **Missed Immunizations:** Lack of clear tracking against the Indian National Immunization Schedule.
+*  **Nutritional Gaps:** Absence of structured guidance on weaning and infant nutrition during the critical first 12 months.
+*  **Accessibility Barriers:** Lack of immediate, culturally relevant, and accessible expert medical guidance.
 
 ---
 
@@ -39,16 +39,16 @@ New mothers in rural villages often cease **Exclusive Breastfeeding** ahead of r
 **Shishu-Sneh** (शिशु-स्नेह, meaning *"Baby's Affection"*) is an offline-first, AI-augmented infant health assistant designed to act as a **digital elder** for new mothers. 
 
 ### Key Capabilities:
-* 📅 **Milestone Indexing:** Provides highly structured, weekly developmental milestones.
-* ⚖️ **Growth Auditing:** Simple weight, height, and health parameter logging with local data visualization.
-* 💉 **Immunization Matrix:** Automates vaccination calendars based on the Indian NIS with robust local reminder queues.
-* 🍲 **GenAI-Powered Nutrition:** Leveraging Google's Gemini AI to compute personalized feeding guides using locally available, low-cost ingredients instead of static, generalized PDFs.
+* **Milestone Indexing:** Provides highly structured, weekly developmental milestones.
+* **Growth Auditing:** Simple weight, height, and health parameter logging with local data visualization.
+*  **Immunization Matrix:** Automates vaccination calendars based on the Indian NIS with robust local reminder queues.
+*  **GenAI-Powered Nutrition:** Leveraging Google's Gemini AI to compute personalized feeding guides using locally available, low-cost ingredients instead of static, generalized PDFs.
 
 ---
 
 ## 3. Project Scope
 
-| In Scope ✅ | Out of Scope ❌ |
+| In Scope  | Out of Scope  |
 | :--- | :--- |
 | Offline-first growth logging & trend visualization | Multi-hospital/District-level cloud sync infrastructure |
 | Automated background vaccination alarms via Android | Built-in e-commerce portals or commercial product placement |
@@ -224,8 +224,4 @@ Shishu-Sneh/
     └── 05-feeding-guide.html
 ```
 
----
 
-<p align="center">
-  Made by <strong>Priyanshu Mehra</strong> · VTU · 1VE22CS119
-</p>
